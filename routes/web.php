@@ -22,5 +22,12 @@ Route::get('/admin',function (){
     return view('admin.index');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('admin/users','AdminUsersController');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=> 'admin'],function (){
+   Route::get('/users','AdminUsersController@index')->name('users.all');
+});
+
+Route::group(['prefix' => 'definicije'],function (){
+   Route::get('/','DefinitionController@index')->name('definition.index');
+});

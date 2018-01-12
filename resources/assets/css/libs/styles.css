@@ -35,3 +35,8 @@
 .toppad
 {margin-top:20px;
 }
+
+#searchform{
+    margin-right: 450px;
+    width: 10%;
+}
