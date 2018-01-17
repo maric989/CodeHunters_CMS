@@ -135,14 +135,18 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Definicije<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/posts">All Posts</a>
+                                <a href="{{route('admin.definition.all')}}">Sve definicije</a>
                             </li>
 
                             <li>
-                                <a href="/posts/create">Create Post</a>
+                                <a href="{{route('admin.definition.approved')}}">Approved</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('admin.definition.disapprovald')}}">Unapproved</a>
                             </li>
 
                         </ul>

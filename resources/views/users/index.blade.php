@@ -122,24 +122,37 @@
                     <li class="sidebar-search">
 
                         <!-- /input-group -->
+
                     </li>
                     <li>
-                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> Hot</a>
+                        @if(strpos(url()->full(),'definicije'))
+                            <a href="{{route('definition.hot')}}"><i class="fa fa-fire fa-fw"></i> sHot</a>
+                        @else
+                            <a href="/"><i class="fa fa-fire fa-fw"></i> Hot</a>
+                        @endif
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Trending<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Fresh<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-line-chart fa-fw"></i> Fresh<span class="fa arrow"></span></a>
 
                     </li>
                     <hr>
 
                     <li>
                         <a href="{{route('definition.index')}}"><i class="fa fa-wrench fa-fw"></i>Definicije<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('definition.index')}}">Sve Definicije</a>
+                            </li>
+                            <li>
+                                <a href="{{route('definition.add')}}">Dodaj Definiciju</a>
+                            </li>
 
+                        </ul>
                     </li>
 
 
