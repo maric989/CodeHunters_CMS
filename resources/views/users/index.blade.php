@@ -15,6 +15,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    <link href="{{asset('css/libs/style.css')}}" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -101,10 +102,15 @@
         <li><a href="{{ url('/auth/register') }}">Register</a></li>
         @endif
         @else
-        <li class="dropdown">
+                <li>
+                    <form action="{{route('logout')}}" method="post">
+                        {{csrf_field()}}
+                        <button type="submit">Logout</button>
+                </form>
+                </li>
+                <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-        <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 
         <li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>
         </ul>
@@ -133,12 +139,19 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
+                        @if(strpos(url()->full(),'definicije'))
+                            <a href="{{route('definition.trending')}}"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
+                        @else
+                            <a href="#"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
+                        @endif
                     </li>
 
                     <li>
+                        @if(strpos(url()->full(),'definicije'))
+                            <a href="{{route('definition.fresh')}}"><i class="fa fa-line-chart fa-fw"></i>Fresh<span class="fa arrow"></span></a>
+                        @else
                         <a href="#"><i class="fa fa-line-chart fa-fw"></i> Fresh<span class="fa arrow"></span></a>
-
+                        @endif
                     </li>
                     <hr>
 

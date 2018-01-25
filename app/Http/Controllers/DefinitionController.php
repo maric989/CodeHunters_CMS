@@ -128,8 +128,37 @@ class DefinitionController extends Controller
         }
         $users = User::all();
         $like = Like::all();
+        $logged_user_id = Auth::user()->id;
 
-        return view('users.definicije.hot',compact('hotdefs','users','like'));
+
+
+        return view('users.definicije.hot',compact('hotdefs','users','like','logged_user_id'));
+    }
+
+    public function trending(Definition $definitions)
+    {
+
+        $users = User::all();
+        $trending_defs = Definition::with('likes')->orderBy('created_at','desc')->get();
+        $logged_user_id = Auth::user()->id;
+
+
+
+        $like = Like::all();
+
+        return view('users.definicije.trending',compact('trending_defs','users','like','logged_user_id'));
+    }
+
+    public function fresh()
+    {
+        $users = User::all();
+        $fresh_defs = Definition::with('likes')->orderBy('created_at','desc')->get();
+        $logged_user_id = Auth::user()->id;
+
+
+        $like = Like::all();
+
+        return view('users.definicije.fresh',compact('fresh_defs','users','like','logged_user_id'));
     }
 
 }
