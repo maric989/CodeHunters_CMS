@@ -65,7 +65,10 @@ class DefinitionController extends Controller
     {
         $definition = Definition::find($request->id);
         $def_creator = User::find($definition->user_id);
-        $comments = Comment::where('post_id',$definition->id)->get();
+        $comments = Comment::where([
+            ['post_id',$definition->id],
+            ['comm_type','App\Definition']
+        ])->get();
         $users = User::all();
         $like_count = Like::where('likeable_id',$definition->id);
 

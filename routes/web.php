@@ -47,6 +47,7 @@ Route::group(['prefix' => 'posteri'],function (){
   Route::post('/store','PosterController@store')->name('poster.store');
   Route::get('/trending','PosterController@trending')->name('poster.trending');
   Route::get('/fresh','PosterController@fresh')->name('poster.fresh');
+  Route::get('/{id}','PosterController@show')->name('poster.single');
 });
 
 // /definicije
@@ -61,10 +62,14 @@ Route::group(['prefix' => 'definicije'],function (){
 });
 
 // comments
-Route::post('/comment','CommentController@store')->name('comment.create');
+Route::post('/definition/comment/','CommentController@store')->name('def.comment.create');
+Route::post('/poster/comment','CommentController@posterComm')->name('poster.comment.create');
 
 // like
 Route::post('/definicija/uplike','DefinitionController@upvote')->name('definition.like.up');
 Route::post('/definicija/downlike','DefinitionController@downvote')->name('definition.like.down');
 Route::post('/posteri/uplike','PosterController@upvote')->name('poster.like.up');
 Route::post('/posteri/downlike','PosterController@downvote')->name('poster.like.down');
+
+// Author
+Route::get('autori','AuthorController@index')->name('author.index');

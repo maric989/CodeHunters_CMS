@@ -184,7 +184,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Autori<span class="fa arrow"></span></a>
+                        <a href="{{route('author.index')}}"><i class="fa fa-bar-chart-o fa-fw"></i> Autori<span class="fa arrow"></span></a>
 
                     </li>
 

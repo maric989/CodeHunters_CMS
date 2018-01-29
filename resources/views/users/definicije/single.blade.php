@@ -27,7 +27,7 @@
                 @endforeach
                 <div class="col-lg-10 panel panel-default">
 
-                <form action="{{route('comment.create')}}" method="post">
+                <form action="{{route('def.comment.create')}}" method="post">
                     {{csrf_field()}}
                     <input type="hidden" name="post_id" value="{{$definition->id}}">
                     <h3>Dodaj komentar</h3>

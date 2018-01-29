@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Like;
 use App\Poster;
+use App\User;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,12 +43,24 @@ class PosterController extends Controller
 
     public function trending()
     {
-        return view('users.posteri.trending');
+        $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
+        $logged_user_id = Auth::user()->id;
+
+
+        $like = Like::all();
+
+        return view('users.posteri.trending',compact('posters','logged_user_id','like'));
     }
 
     public function fresh()
     {
-        return view('users.posteri.fresh');
+        $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
+        $logged_user_id = Auth::user()->id;
+
+
+        $like = Like::all();
+
+        return view('users.posteri.fresh',compact('like','logged_user_id','posters'));
     }
 
     public function upvote(Request $request,Like $like)
@@ -68,6 +82,23 @@ class PosterController extends Controller
         }
 
         return back();
+    }
+
+    public function show(Request $request)
+    {
+
+        $poster = Poster::find($request->id);
+        $creator = User::find($poster->user_id);
+        $comments = Comment::where([['post_id','=',$poster->id],['comm_type','=','App\Poster']])->get();
+        $users = User::all();
+        $like_count = Like::where('likeable_id',$poster->id);
+
+
+        return view('users.posteri.single',compact('poster',
+            'creator',
+            'comments',
+            'users',
+            'like_count'));
     }
 
     public function downvote(Request $request,Like $like)
