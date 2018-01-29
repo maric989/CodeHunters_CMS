@@ -17,6 +17,7 @@ class DefinitionController extends Controller
     {
         $definitions = Definition::where('approved','1')->orderBy('created_at','desc')->get();
         $definition = $definitions->pluck('id');
+        $logged_user_id = Auth::user()->id;
 
         $users = User::all();
 
@@ -29,7 +30,7 @@ class DefinitionController extends Controller
         }
 
 
-        return view('users.definicije.index',compact('definitions','users','like','sum'));
+        return view('users.definicije.index',compact('definitions','users','like','sum','logged_user_id'));
     }
 
     public function create()
@@ -41,14 +42,21 @@ class DefinitionController extends Controller
 
     public function store(Request $request,Definition $definition)
     {
-        $user = Auth::user();
+        $user_id = Auth::user()->id;
 
         $definition->title = $request->title;
         $definition->body  = $request->definicija;
         $definition->example = $request->primer;
-        $definition->user_id = $user->id;
+        $definition->user_id = $user_id;
 
         $definition->save();
+
+        $user = User::find($user_id);
+        if (empty($user->role_id))
+        {
+            $user->role_id = 2;
+            $user->save();
+        }
 
         return redirect('/definicije');
     }
@@ -115,21 +123,12 @@ class DefinitionController extends Controller
     public function hot(Definition $definitions)
     {
 
-        $hots = Like::select(\DB::raw('SUM(up) as count,likeable_id'))
-            ->groupBy('likeable_id')
-            ->get();
-
-        foreach ($hots as $hot)
-        {
-            if($hot->count >= 2 )
-            {
-                $hotdefs = $definitions->where('id',$hot->likeable_id)->orderBy('created_at','desc')->get();
-            }
-        }
         $users = User::all();
-        $like = Like::all();
+        $hotdefs = Definition::with('likes')->orderBy('created_at','desc')->get();
         $logged_user_id = Auth::user()->id;
 
+
+        $like = Like::all();
 
 
         return view('users.definicije.hot',compact('hotdefs','users','like','logged_user_id'));

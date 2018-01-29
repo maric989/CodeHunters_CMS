@@ -155,14 +155,17 @@
 
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Posteri<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/categories">All Categories</a>
+                                <a href="{{route('admin.posteri.index')}}">Svi Posteri</a>
                             </li>
 
                             <li>
-                                <a href="/categories/create">Create Category</a>
+                                <a href="{{route('admin.posteri.approved')}}">Odobreni Posteri</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.posteri.rejected')}}">Cekaju odobrenje Posteri</a>
                             </li>
 
                         </ul>

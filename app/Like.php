@@ -19,4 +19,8 @@ class Like extends Model
     public function getDefinition(){
         return $this->belongsTo(Definition::class, 'likeable_id', 'id');
     }
+
+    public function getPoster(){
+        return $this->belongsTo(Poster::class, 'likeable_id', 'id');
+    }
 }

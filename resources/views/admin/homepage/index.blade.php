@@ -16,7 +16,7 @@
                 <p>Broj Definicija</p>
             </div>
             <div class="col-lg-4">
-                <h1>0</h1>
+                <h1>{{$posters_count}}</h1>
                 <p>Broj Postera</p>
             </div>
         </div>

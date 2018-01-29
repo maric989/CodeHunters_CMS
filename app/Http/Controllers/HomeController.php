@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
+use App\Poster;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,13 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
-        return view('users.index');
+        $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
+        $logged_user_id = Auth::user()->id;
+
+
+        $like = Like::all();
+
+        return view('users.posteri.index',compact('posters','like','logged_user_id'));
     }
 
     public function adminPanel()
@@ -35,10 +43,10 @@ class HomeController extends Controller
         $user = Auth::user();
         $users_count = User::count();
         $definicije_count = Definition::count();
-
+        $posters_count = Poster::count();
 
         return view('admin.homepage.index',compact('user','definicije_count',
-            'users_count'));
+            'users_count','posters_count'));
 
     }
 }

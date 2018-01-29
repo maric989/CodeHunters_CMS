@@ -44,6 +44,7 @@
                 <span class="icon-bar"></span>
             </button>
 
+            {{--TITLE--}}
             @if(strpos(url()->full(),'definicije'))
                 <a class="navbar-brand" href="/">Definicije</a>
             @elseif(strpos(url()->full(),'/'))
@@ -142,7 +143,7 @@
                         @if(strpos(url()->full(),'definicije'))
                             <a href="{{route('definition.trending')}}"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
                         @else
-                            <a href="#"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
+                            <a href="{{route('poster.trending')}}"><i class="fa fa-arrow-up fa-fw"></i>Trending<span class="fa arrow"></span></a>
                         @endif
                     </li>
 
@@ -150,7 +151,7 @@
                         @if(strpos(url()->full(),'definicije'))
                             <a href="{{route('definition.fresh')}}"><i class="fa fa-line-chart fa-fw"></i>Fresh<span class="fa arrow"></span></a>
                         @else
-                        <a href="#"><i class="fa fa-line-chart fa-fw"></i> Fresh<span class="fa arrow"></span></a>
+                        <a href="{{route('poster.fresh')}}"><i class="fa fa-line-chart fa-fw"></i> Fresh<span class="fa arrow"></span></a>
                         @endif
                     </li>
                     <hr>
@@ -171,7 +172,15 @@
 
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Posteri<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Svi Posteri</a>
+                            </li>
+                            <li>
+                                <a href="{{route('poster.add')}}">Dodaj Poster</a>
+                            </li>
 
+                        </ul>
                     </li>
 
                     <li>

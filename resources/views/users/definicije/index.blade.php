@@ -9,7 +9,7 @@
                     <h2><a href="{{route('definition.single',$definition->id)}}">{{$definition->title}}</a></h2>
                     <p style="text-align: right">{{($like->where('likeable_id',$definition->id)->pluck('up')->sum())- $like->where('likeable_id',$definition->id)->pluck('down')->sum()}}</p>
 
-                    @if(!$definition->likes()->where('user_id',$users->find($definition->user_id)->id)->count())
+                    @if(!$definition->likes()->where('user_id',$logged_user_id)->count())
                     <div class="col-lg-12" style="margin-right: 50px">
                         <form action="{{route('definition.like.up')}}" style="text-align: right" method="post">
                             {{csrf_field()}}
