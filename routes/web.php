@@ -11,8 +11,12 @@
 |
 */
 
-Auth::routes();
-
+//Auth::routes();
+Route::get('/signup','AuthController@getSignUp')->name('auth.signup');
+Route::post('/signup','AuthController@postSignUp')->name('auth.post_sign_up');
+Route::get('/login','AuthController@getSignIn')->name('login');
+Route::post('/login','AuthController@postSignIn')->name('login.store');
+Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::group(['prefix'=> 'admin'],function (){
     Route::get('/','HomeController@adminPanel')->name('admin.index');

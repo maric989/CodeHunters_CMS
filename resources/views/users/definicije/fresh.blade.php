@@ -6,7 +6,7 @@
         @foreach($fresh_defs as $definition)
             @if(($definition->likes->pluck('up')->sum()) <= 2)
 
-                <div class="col-lg-10 panel panel-default" style="text-align: left; background-color: darkolivegreen; color: white">
+                <div class="col-lg-10 definicije">
                     <div class="col-md-12">
                         <h2><a href="{{route('definition.single',$definition->id)}}">{{$definition->title}}</a></h2>
                         <p style="text-align: right">{{($like->where('likeable_id',$definition->id)->pluck('up')->sum())- $like->where('likeable_id',$definition->id)->pluck('down')->sum()}}</p>

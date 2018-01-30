@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+   //     $this->middleware('auth');
     }
 
     /**
@@ -30,7 +30,10 @@ class HomeController extends Controller
     public function index(User $user)
     {
         $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
-        $logged_user_id = Auth::user()->id;
+        if (Auth::user())
+        {
+            $logged_user_id = Auth::user()->id;
+        }
 
 
         $like = Like::all();

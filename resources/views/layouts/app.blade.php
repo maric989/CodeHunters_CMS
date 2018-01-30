@@ -15,6 +15,7 @@
 </head>
 <body>
     <div id="app">
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -43,8 +44,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{route('login')}}">Prijavi se</a></li>
+                            <li><a href="{{ route('auth.signup') }}">Registruj se</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -53,13 +54,13 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="#"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="#" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -70,7 +71,9 @@
                 </div>
             </div>
         </nav>
-
+        <h3 style="text-align: center">
+            @include('layouts.flash-message')
+        </h3>
         @yield('content')
     </div>
 

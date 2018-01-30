@@ -40,7 +40,8 @@
     margin-right: 450px;
     width: 10%;
 }
-.definicije{
-    border-radius: 45px;
-}
 
+.definicije h2
+{
+    color: red;
+}
