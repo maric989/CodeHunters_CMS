@@ -10,7 +10,8 @@
                         <h2><a href="{{route('poster.single',$poster->id)}}">{{$poster->title}}</a></h2>
                         <img src="{{$poster->image}}" style="width: 70%" height="auto">
                         <p style="text-align: right">{{($like->where('likeable_id',$poster->id)->whereIn('likeable_type','App\Poster')->pluck('up')->sum()) - $like->where('likeable_id',$poster->id)->whereIn('likeable_type','App\Poster')->pluck('down')->sum()}}</p>
-                    @if(!$poster->likes()->where('user_id',$logged_user_id)->count())
+                        @if(Auth::user())
+                        @if(!$poster->likes()->where('user_id',$logged_user_id)->count())
                             <div class="col-lg-12" style="margin-right: 50px">
                                 <form action="{{route('poster.like.up')}}" style="text-align: right" method="post">
                                     {{csrf_field()}}
@@ -23,6 +24,7 @@
                                     <button>DOWN</button>
                                 </form>
                             </div>
+                        @endif
                         @endif
                     </div>
                 </div>

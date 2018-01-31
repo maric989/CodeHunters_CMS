@@ -27,3 +27,30 @@
     border-radius: 15px;
     margin-top: 12px;
 }
+
+.poster
+{
+    width: 50%;
+    height: auto;
+
+}
+.poster img{
+    width: 40%;
+    height: auto;
+}
+
+.poster a{
+    color: black;
+    font-size: 20px;
+    word-wrap: break-word;
+}
+
+.poster_action {
+    position: relative;
+}
+
+.poster_action li{
+    display: block;
+    background-color: grey;
+    width: 10%;
+}

@@ -16,8 +16,6 @@ class PosterController extends Controller
 {
     public function create()
     {
-
-
         return view('users.posteri.create');
     }
 
@@ -44,7 +42,10 @@ class PosterController extends Controller
     public function trending()
     {
         $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
-        $logged_user_id = Auth::user()->id;
+        if (Auth::user())
+        {
+            $logged_user_id = Auth::user()->id;
+        }
 
 
         $like = Like::all();
@@ -55,8 +56,10 @@ class PosterController extends Controller
     public function fresh()
     {
         $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
-        $logged_user_id = Auth::user()->id;
 
+        if (Auth::user()) {
+            $logged_user_id = Auth::user()->id;
+        }
 
         $like = Like::all();
 
@@ -65,6 +68,7 @@ class PosterController extends Controller
 
     public function upvote(Request $request,Like $like)
     {
+
         $user_id = Auth::user()->id;
         $poster = Poster::find($request->post_id);
 

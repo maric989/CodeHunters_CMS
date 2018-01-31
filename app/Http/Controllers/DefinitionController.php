@@ -17,8 +17,9 @@ class DefinitionController extends Controller
     {
         $definitions = Definition::where('approved','1')->orderBy('created_at','desc')->get();
         $definition = $definitions->pluck('id');
-        $logged_user_id = Auth::user()->id;
-
+        if (Auth::user()) {
+            $logged_user_id = Auth::user()->id;
+        }
         $users = User::all();
 
         $like = Like::all();
@@ -128,8 +129,9 @@ class DefinitionController extends Controller
 
         $users = User::all();
         $hotdefs = Definition::with('likes')->orderBy('created_at','desc')->get();
-        $logged_user_id = Auth::user()->id;
-
+        if (Auth::user()) {
+            $logged_user_id = Auth::user()->id;
+        }
 
         $like = Like::all();
 
@@ -142,8 +144,9 @@ class DefinitionController extends Controller
 
         $users = User::all();
         $trending_defs = Definition::with('likes')->orderBy('created_at','desc')->get();
-        $logged_user_id = Auth::user()->id;
-
+        if (Auth::user()) {
+            $logged_user_id = Auth::user()->id;
+        }
 
 
         $like = Like::all();
@@ -155,8 +158,9 @@ class DefinitionController extends Controller
     {
         $users = User::all();
         $fresh_defs = Definition::with('likes')->orderBy('created_at','desc')->get();
-        $logged_user_id = Auth::user()->id;
-
+        if (Auth::user()) {
+            $logged_user_id = Auth::user()->id;
+        }
 
         $like = Like::all();
 
