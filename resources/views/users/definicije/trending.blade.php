@@ -7,7 +7,7 @@
             @if(($definition->likes->pluck('up')->sum()) >= 2 && ($definition->likes->pluck('up')->sum()) < 5 )
             <div class="col-lg-10 definicije">
                 <div class="col-md-12">
-                    <h2><a href="{{route('definition.single',$definition->id)}}">{{$definition->title}}</a></h2>
+                    <h2><a href="{{route('definition.single',[$definition->slug,$definition->id])}}">{{$definition->title}}</a></h2>
                     <p class="likes_counter">{{($like->where('likeable_id',$definition->id)->pluck('up')->sum())- $like->where('likeable_id',$definition->id)->pluck('down')->sum()}}</p>
                     @if(Auth::user())
                         @if(!$definition->likes()->where('user_id',$logged_user_id)->count())

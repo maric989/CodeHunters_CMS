@@ -49,10 +49,12 @@ class DefinitionController extends Controller
         $definition->body  = $request->definicija;
         $definition->example = $request->primer;
         $definition->user_id = $user_id;
+        $definition->slug = str_slug($request->title,'-');
 
         $definition->save();
 
         $user = User::find($user_id);
+
         if (empty($user->role_id))
         {
             $user->role_id = 2;

@@ -62,7 +62,7 @@ Route::group(['prefix' => 'definicije'],function (){
    Route::get('/trending','DefinitionController@trending')->name('definition.trending');
    Route::get('/fresh','DefinitionController@fresh')->name('definition.fresh');
    Route::post('/','DefinitionController@store')->name('definition.store');
-   Route::get('/{id}','DefinitionController@show')->name('definition.single');
+   Route::get('/{slug}/{id}','DefinitionController@show')->name('definition.single');
 });
 
 // comments
