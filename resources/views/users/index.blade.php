@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Admin</title>
 
@@ -15,7 +16,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/mystyle.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/style.css')}}" rel="stylesheet">
+{{--    <link href="{{asset('css/libs/style.css')}}" rel="stylesheet">--}}
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -275,11 +276,20 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('js/libs.js')}}"></script>
+{{--<script src="{{asset('js/libs.js')}}"></script>--}}
 
 
 @yield('footer')
 
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
+
+<script src="{{asset('js/http_code.jquery.com_jquery-2.2.4.js')}}"></script>
+<script src="{{asset('js/http_ajax.googleapis.com_ajax_libs_jquery_3.1.1_jquery.js')}}"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
+
+{{--<!-- toastr notifications -->--}}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{asset('js/my_js.js')}}"></script>
 
 
 

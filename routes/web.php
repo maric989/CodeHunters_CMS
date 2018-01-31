@@ -46,12 +46,13 @@ Route::group(['prefix'=> 'admin'],function (){
 // /posteri
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::group(['prefix' => 'posteri'],function (){
   Route::get('/create','PosterController@create')->name('poster.add');
   Route::post('/store','PosterController@store')->name('poster.store');
   Route::get('/trending','PosterController@trending')->name('poster.trending');
   Route::get('/fresh','PosterController@fresh')->name('poster.fresh');
-  Route::get('/{id}','PosterController@show')->name('poster.single');
+  Route::get('/{slug}/{id}','PosterController@show')->name('poster.single');
 });
 
 // /definicije

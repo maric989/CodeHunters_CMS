@@ -41,7 +41,7 @@ class AuthController extends Controller
             return redirect()->back()->with('info','Ne mozete se prijaviti sa tim podacima');
         }
 
-        return redirect()->route('home')->with('info','Uspesno ste se prijavili');
+        return redirect()->route('home')->with('success','Uspesno ste se prijavili');
     }
 
     public function logout()
@@ -49,6 +49,6 @@ class AuthController extends Controller
 
         Auth::logout();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('info','Dovidjenja');
     }
 }

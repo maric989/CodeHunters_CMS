@@ -17,6 +17,7 @@
                 <p style="text-align: right">{{$comment->created_at->diffForHumans()}}</p>
             </div>
         @endforeach
+
         <div class="col-lg-10 panel panel-default">
 
             <form action="{{route('poster.comment.create')}}" method="post">

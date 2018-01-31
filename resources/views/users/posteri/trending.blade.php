@@ -6,7 +6,7 @@
             @if(($poster->likes->pluck('up')->sum()) <=5 && ($poster->likes->pluck('up')->sum()) >=2)
                 <div class="col-lg-10 panel panel-default" style="text-align: left; background-color: darkolivegreen; color: white">
                     <div class="col-md-12">
-                        <h2><a href="{{route('poster.single',$poster->id)}}">{{$poster->title}}</a></h2>
+                        <h2><a href="{{route('poster.single',[$poster->slug,$poster->id])}}">{{$poster->title}}</a></h2>
                         <img src="{{$poster->image}}" style="width: 70%" height="auto">
                         <p style="text-align: right">{{($like->where('likeable_id',$poster->id)->whereIn('likeable_type','App\Poster')->pluck('up')->sum()) - $like->where('likeable_id',$poster->id)->whereIn('likeable_type','App\Poster')->pluck('down')->sum()}}</p>
                         @if(Auth::user())

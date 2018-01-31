@@ -130,7 +130,7 @@ class DefinitionController extends Controller
     {
 
         $users = User::all();
-        $hotdefs = Definition::with('likes')->orderBy('created_at','desc')->get();
+        $hotdefs = Definition::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
         if (Auth::user()) {
             $logged_user_id = Auth::user()->id;
         }
@@ -145,7 +145,7 @@ class DefinitionController extends Controller
     {
 
         $users = User::all();
-        $trending_defs = Definition::with('likes')->orderBy('created_at','desc')->get();
+        $trending_defs = Definition::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
         if (Auth::user()) {
             $logged_user_id = Auth::user()->id;
         }
@@ -159,7 +159,7 @@ class DefinitionController extends Controller
     public function fresh()
     {
         $users = User::all();
-        $fresh_defs = Definition::with('likes')->orderBy('created_at','desc')->get();
+        $fresh_defs = Definition::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
         if (Auth::user()) {
             $logged_user_id = Auth::user()->id;
         }

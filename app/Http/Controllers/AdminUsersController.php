@@ -6,6 +6,7 @@ use App\Definition;
 use App\Poster;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUsersController extends Controller
 {
@@ -16,6 +17,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::user()->id;
         $users = User::paginate(10);
         $definitions = Definition::all();
         $posters = Poster::all();

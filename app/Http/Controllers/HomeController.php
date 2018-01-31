@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
-        $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
+        $posters = Poster::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
         if (Auth::user())
         {
             $logged_user_id = Auth::user()->id;
@@ -43,7 +43,17 @@ class HomeController extends Controller
 
     public function adminPanel()
     {
+        if (!Auth::user())
+        {
+            return redirect('/');
+
+        }
         $user = Auth::user();
+        $user_id = $user->id;
+        if ($user->role->name != 'admin')
+        {
+            return redirect('/');
+        }
         $users_count = User::count();
         $definicije_count = Definition::count();
         $posters_count = Poster::count();

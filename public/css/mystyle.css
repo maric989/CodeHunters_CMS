@@ -45,12 +45,56 @@
     word-wrap: break-word;
 }
 
-.poster_action {
-    position: relative;
-}
 
 .poster_action li{
     display: block;
     background-color: grey;
     width: 10%;
+}
+
+.poster_single
+{
+    width: 50%;
+    height: auto;
+
+}
+.poster_single img{
+    width: 85%;
+    height: auto;
+}
+.poster_single h3{
+    background-color: white;
+    text-decoration: none;
+}
+.poster_single a:link {
+    text-decoration: none;
+    color: black;
+}
+#opisP {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.opisPosta {
+    width: 85%;
+    height: auto;
+    background-color: black;
+    margin-top: -10px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+.opisPosta h4{
+    font-size: 30px;
+}
+
+.meta_info_poster
+{
+    width: 80%;
+}
+.meta_info_poster form
+{
+
 }

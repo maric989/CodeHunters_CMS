@@ -28,8 +28,9 @@ class PosterController extends Controller
         $image->move($destinationPath, $name);
 
         $poster->image = '/images/'.$name;
-        $poster->title = 'ssss';
-        $poster->body = 'aa';
+        $poster->title = $request->title;
+        $poster->body = $request->body;
+        $poster->slug = str_slug($request->body,'-');
         $poster->user_id = Auth::user()->id;
 
         $poster->save();
@@ -41,7 +42,7 @@ class PosterController extends Controller
 
     public function trending()
     {
-        $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
+        $posters = Poster::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
         if (Auth::user())
         {
             $logged_user_id = Auth::user()->id;
@@ -55,7 +56,7 @@ class PosterController extends Controller
 
     public function fresh()
     {
-        $posters = Poster::with('likes')->orderBy('created_at','desc')->get();
+        $posters = Poster::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
 
         if (Auth::user()) {
             $logged_user_id = Auth::user()->id;
@@ -107,6 +108,7 @@ class PosterController extends Controller
 
     public function downvote(Request $request,Like $like)
     {
+        dd($request);
         $user_id = Auth::user()->id;
         $poster = Poster::find($request->post_id);
 
