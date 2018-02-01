@@ -24,15 +24,17 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  =>  'required|max:255'
+            'name'  =>  'required|unique:users|max:255',
+            'email'  =>  'required|unique:users|max:255',
+            'password'  =>  'required|min:6',
         ];
     }
 
     public function messages()
     {
         return [
-        'name|required'  => 'fali ti ime rodjace',
-
+        'name.unique'  => 'Nick je vec zauzet',
+        'email.unique'  => 'Email vec postoji',
             ];
     }
 }

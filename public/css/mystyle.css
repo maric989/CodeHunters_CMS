@@ -7,6 +7,7 @@
 .definicije blockquote
 {
     background: #5bc0de;
+    border-radius: 15px;
     border-left: 10px solid #ccc;
     margin: 1.5em 10px;
     padding: 0.5em 10px;

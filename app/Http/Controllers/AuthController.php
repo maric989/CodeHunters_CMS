@@ -19,7 +19,8 @@ class AuthController extends Controller
         User::create([
            'email' => $request->input('email'),
            'name'  => $request->input('name'),
-           'password' => bcrypt($request->input('password'))
+           'password' => bcrypt($request->input('password')),
+           'slug'   =>  str_slug($request->input('name'),'-')
         ]);
 
         return redirect('/login')->with('success','Tvoj nalog je kreiran');
