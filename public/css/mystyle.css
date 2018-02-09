@@ -99,3 +99,74 @@
 {
 
 }
+
+
+/*profile*/
+.profilehead{
+    width:100%;
+    height: auto;
+}
+.profilehead div{
+    width:30%;
+    height:auto;
+    float:left;
+}
+.profilehead span{
+    font-size: 25px;
+    padding: 7px;
+    border-radius: 7px;
+    width:30%;
+    height:50px;
+    float:right;
+    text-align: center;
+    background: #337ab7;
+}
+.wrap {
+    width: 90%;
+    margin: 10px auto;
+}
+.flex{
+    display:flex;
+    justify-content: space-around;
+}
+.imgwrap{
+    width:40%;
+    margin:2%;
+    height:auto;
+}
+.userstats {
+    width:60%;
+    margin:2%;
+    height:auto;
+}
+.imgwrap img{
+    width:100%;
+    height:auto;
+}
+.userstats ul{
+    padding:0;
+    list-style-type: none;
+    background: #337ab7;
+    border-radius: 7px;
+}
+.userstats li{
+    padding: 5px;
+    margin-top:2px;
+    height: 30px;
+    color: white;
+    border-bottom:solid 1px white;
+}
+.znacke {
+    padding:5px;
+    margin-bottom:10px;
+    align-items: center;
+}
+.znacke div{
+    width:30%;
+    text-align: center;
+    border-radius:7px;
+    background:#337ab7;
+}
+.znacke span{
+    color:white;
+}

@@ -123,7 +123,7 @@
         <ul class="nav navbar-nav navbar-right" style="margin-right: 50px">
         @if(Auth::check())
             <li><a href="#"> {{Auth::user()->name}}</a></li>
-            <li><a href="{{route('user.profile')}}"> Profile </a></li>
+            <li><a href="{{route('author.profile',Auth::user()->id)}}"> Profile </a></li>
             <li>
                 <form action="{{route('logout')}}" method="get">
                     {{csrf_field()}}

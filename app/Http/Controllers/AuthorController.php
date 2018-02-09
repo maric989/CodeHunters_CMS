@@ -17,4 +17,11 @@ class AuthorController extends Controller
 
         return view('users.autori.index',compact('authors','definitions','poster'));
     }
+
+    public function profile(Request $request)
+    {
+        $user = User::find($request->id);
+
+        return view('users.autori.user',compact('user'));
+    }
 }
