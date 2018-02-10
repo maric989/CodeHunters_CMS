@@ -144,6 +144,7 @@
     height:70%;
     border: 5px solid #337ab7;
 }
+
 .userstats {
     width:60%;
     margin:2%;
@@ -159,6 +160,9 @@
     background: #337ab7;
     border-radius: 7px;
 }
+/*a.profile-pic { display: block; height: 150px; width: 75px; }*/
+a.profile-pic span {visibility: hidden }
+a.profile-pic:hover span { visibility: visible; }
 .userstats li{
     padding: 5px;
     margin-top:2px;

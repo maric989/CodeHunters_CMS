@@ -49,10 +49,25 @@
             </ul>
         </div>
         <div class="imgwrap">
-            @if($user->img)
-                <img src="{{$user->img}}" alt="profilna slika">
+
+            @if(Auth::user()->slug == $user->slug)
+                @if($user->img)
+                    <a href="#" class="profile-pic">
+                        <img src="/images/user/default-profile.png" alt="profilna slika">
+                        <span><a href="#">Change Picture</a></span>
+                    </a>
+                @else
+                    <a href="#" class="profile-pic">
+                        <img src="/images/user/default-profile.png" alt="profilna slika">
+                        <span><a href="#">Change Picture</a></span>
+                    </a>
+                @endif
             @else
-                <img src="/images/user/default-profile.png" alt="profilna slika">
+                @if($user->img)
+                        <img src="{{$user->img}}" alt="profilna slika">
+                @else
+                        <img src="/images/user/default-profile.png" alt="profilna slika">
+                @endif
             @endif
         </div>
     </div>
