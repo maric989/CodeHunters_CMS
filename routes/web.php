@@ -78,7 +78,6 @@ Route::post('/posteri/downlike','PosterController@downvote')->name('poster.like.
 
 // Author
 Route::get('autori','AuthorController@index')->name('author.index');
-Route::get('autori/{id}','AuthorController@profile')->name('author.profile');
+Route::get('autor/{slug}/podesavanja','AuthorController@settings')->name('author.settings');
+Route::get('autor/{slug}','AuthorController@profile')->name('author.profile');
 
-// User Settings
-Route::get('autori/{slug}','UserController@index')->name('user.profile');

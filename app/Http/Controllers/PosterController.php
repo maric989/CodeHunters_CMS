@@ -99,8 +99,9 @@ class PosterController extends Controller
         $like_count = Like::where('likeable_id',$poster->id);
 
 
-        return view('users.posteri.single',compact('poster',
-            'creator',
+        return view('users.posteri.single',compact(
+   'poster',
+         'creator',
             'comments',
             'users',
             'like_count'));
@@ -108,7 +109,7 @@ class PosterController extends Controller
 
     public function downvote(Request $request,Like $like)
     {
-        dd($request);
+
         $user_id = Auth::user()->id;
         $poster = Poster::find($request->post_id);
 

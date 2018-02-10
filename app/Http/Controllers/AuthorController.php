@@ -6,6 +6,7 @@ use App\Definition;
 use App\Poster;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
 {
@@ -20,8 +21,23 @@ class AuthorController extends Controller
 
     public function profile(Request $request)
     {
-        $user = User::find($request->id);
+       $user = User::where('slug','=',$request->slug)->first();
 
         return view('users.autori.user',compact('user'));
+    }
+
+    public function settings(Request $request)
+    {
+
+        if (Auth::user()->slug != $request->slug)
+        {
+            return back();
+        }
+
+        $user = User::find(Auth::user()->id);
+
+        return view('users.autori.settings',compact('user'));
+
+
     }
 }
