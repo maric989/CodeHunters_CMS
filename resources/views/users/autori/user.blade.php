@@ -5,6 +5,9 @@
         <div>{{$user->name}}</div>
         <a href="{{route('author.settings',$user->slug)}}"><span>Edit profile</span></a>
     </div>
+    <div class="change_picture">
+        <a href="{{route('author.uploadImage',$user->slug)}}"><span>Promeni Profilnu Sliku</span></a>
+    </div>
     <div class="wrap flex">
         <div class="userstats">
             <div class="znacke flex">
@@ -50,25 +53,14 @@
         </div>
         <div class="imgwrap">
 
-            @if(Auth::user()->slug == $user->slug)
-                @if($user->img)
-                    <a href="#" class="profile-pic">
-                        <img src="/images/user/default-profile.png" alt="profilna slika">
-                        <span><a href="#">Change Picture</a></span>
+                @if($user->profile_photo)
+                        <img src="{{$user->profile_photo}}" alt="profilna slika">
+
                     </a>
-                @else
-                    <a href="#" class="profile-pic">
-                        <img src="/images/user/default-profile.png" alt="profilna slika">
-                        <span><a href="#">Change Picture</a></span>
-                    </a>
-                @endif
-            @else
-                @if($user->img)
-                        <img src="{{$user->img}}" alt="profilna slika">
                 @else
                         <img src="/images/user/default-profile.png" alt="profilna slika">
                 @endif
-            @endif
+
         </div>
     </div>
 

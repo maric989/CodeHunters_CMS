@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Definition;
+use App\Http\Requests\CreateDefinitionRequest;
 use App\Like;
 use App\User;
 use Illuminate\Auth\Authenticatable;
@@ -41,7 +42,7 @@ class DefinitionController extends Controller
         return view('users.definicije.create',compact('user'));
     }
 
-    public function store(Request $request,Definition $definition)
+    public function store(CreateDefinitionRequest $request,Definition $definition)
     {
         $user_id = Auth::user()->id;
 

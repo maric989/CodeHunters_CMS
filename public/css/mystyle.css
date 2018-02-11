@@ -102,6 +102,40 @@
 
 
 /*profile*/
+.change_picture{
+    width:100%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.change_picture div{
+    width:30%;
+    height:auto;
+    float:left;
+}
+
+.change_picture span{
+    font-size: 25px;
+    padding: 7px;
+    border-radius: 7px;
+    width:30%;
+    height:50px;
+    float:right;
+    text-align: center;
+    background: #337ab7;
+}
+
+
+.change_picture a{
+    color: white;
+    text-decoration: none;
+}
+.change_picture a:hover{
+    color: #d9edf7;
+    text-decoration: none;
+}
+
+
 .profilehead{
     width:100%;
     height: auto;
@@ -160,9 +194,8 @@
     background: #337ab7;
     border-radius: 7px;
 }
-/*a.profile-pic { display: block; height: 150px; width: 75px; }*/
-a.profile-pic span {visibility: hidden }
-a.profile-pic:hover span { visibility: visible; }
+
+
 .userstats li{
     padding: 5px;
     margin-top:2px;
@@ -183,4 +216,7 @@ a.profile-pic:hover span { visibility: visible; }
 }
 .znacke span{
     color:white;
+}
+.user_update{
+    border: 2px solid;
 }

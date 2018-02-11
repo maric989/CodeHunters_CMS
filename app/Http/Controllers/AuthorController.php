@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Definition;
 use App\Poster;
 use App\User;
+use foo\bar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,35 @@ class AuthorController extends Controller
 
         return view('users.autori.settings',compact('user'));
 
+
+    }
+
+    public function uploadImage(Request $request)
+    {
+        if (Auth::user()->slug !== $request->slug)
+        {
+            return back();
+        }
+
+        return view('users.autori.uploadImage');
+    }
+
+    public function storeImage(Request $request)
+    {
+
+        $user = User::find(Auth::user()->id);
+
+
+        $image = $request->file('image');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/user');
+        $image->move($destinationPath, $name);
+
+        $user->profile_photo = '/images/user/'.$name;
+
+        $user->save();
+
+        return back();
 
     }
 }
