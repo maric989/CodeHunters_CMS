@@ -6,7 +6,10 @@
             @if(($poster->likes->pluck('up')->sum()) <=3 )
                     <div class="poster_single" >
                         <h3><a href="{{route('poster.single',[$poster->slug,$poster->id])}}">{{$poster->title}}</a></h3>
-                        <h5>By: {{$poster->user->name}}  |  kreirano: {{$poster->createdAtSerbian()}}</h5>
+                        <h5>
+                            <i class="fa fa-user"> {{$poster->user->name}}  </i>   |
+                            <i class="fa fa-calendar"> pre {{$poster->createdAtSerbian()}}</i>
+                        </h5>
                         <img src="{{$poster->image}}">
                         <div class="opisPosta">
                             <h4>{{$poster->body}}</h4>
@@ -54,7 +57,12 @@
                       @endif
 
                     </div>
+                        <hr>
                     </div>
+
             @endif
         @endforeach
+        <div style="text-align: center">
+            <?php echo $posters->render(); ?>
+        </div>
 @endsection

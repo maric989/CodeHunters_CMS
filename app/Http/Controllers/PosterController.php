@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CreatePosterRequest;
 use App\Like;
 use App\Poster;
 use App\User;
@@ -27,17 +28,17 @@ class PosterController extends Controller
 
         $date = Carbon::now()->subHour(5);
 
-        if ($last_poster->created_at > $date)
-        {
-            return view('users.posteri.create_limit',compact('last_poster'));
+        if (!is_null($last_poster)) {
+            if ($last_poster->created_at > $date) {
+                return view('users.posteri.create_limit', compact('last_poster'));
+            }
         }
 
         return view('users.posteri.create');
     }
 
-    public function store(Request $request,Poster $poster)
+    public function store(CreatePosterRequest $request,Poster $poster)
     {
-
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images');
@@ -72,7 +73,7 @@ class PosterController extends Controller
 
     public function fresh()
     {
-        $posters = Poster::where('approved','1')->with('likes')->orderBy('created_at','desc')->get();
+        $posters = Poster::where('approved','1')->with('likes')->orderBy('created_at','desc')->paginate(5);
 
         if (Auth::user()) {
             $logged_user_id = Auth::user()->id;

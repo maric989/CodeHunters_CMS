@@ -48,9 +48,10 @@ class DefinitionController extends Controller
 
         $date = Carbon::now()->subHour(5);
 
-        if ($last_definition->created_at > $date)
-        {
-            return view('users.definicije.create_limit',compact('last_definition'));
+        if (!is_null($last_definition)) {
+            if ($last_definition->created_at > $date) {
+                return view('users.definicije.create_limit', compact('last_definition'));
+            }
         }
 
         return view('users.definicije.create',compact('user'));

@@ -25,13 +25,25 @@
     {{--{{Form::close()}}--}}
     <form action="{{route('poster.store')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
-        <label for="title">Ime postera</label>
-        <input type="text" id="imeInput" name="title" onchange="uzmiIme()">
-
-        <label for="body">Opis postera</label>
-        <input type="text" name="body" id="opisInput" onchange="uzmiOpis()">
-
-        <br>
+        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+            <label for="title">Ime postera</label>
+            <input type="text" id="imeInput" name="title" onchange="uzmiIme()">
+            @if ($errors->has('title'))
+                <span class="help-block">
+                     <strong>{{ $errors->first('title') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+            <label for="body">Opis postera</label>
+            <input type="text" name="body" id="opisInput" onchange="uzmiOpis()">
+            @if ($errors->has('title'))
+                <span class="help-block">
+                         <strong>{{ $errors->first('body') }}</strong>
+                    </span>
+            @endif
+            <br>
+        </div>
         <label for="body">Dodaj poster</label>
         <input type="file" name="image" onchange="loadFile(event)">
 

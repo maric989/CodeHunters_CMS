@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateDefinitionRequest extends FormRequest
+class CreatePosterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,17 @@ class CreateDefinitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'definicija'    =>  'required'
-        ];
+            'title'     =>  'required',
+            'body'      =>  'required',
 
+        ];
     }
 
     public function messages()
     {
         return [
-          'title.required'  =>  'Niste uneli naslov',
-          'definicija.required'  =>  'Niste uneli sadrzaj definicije'
+            'title.required' => 'Morate Uneti ime postera',
+            'body.required' => 'Morate Uneti opis postera',
         ];
     }
 }
