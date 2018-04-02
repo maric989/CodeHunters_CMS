@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="containter">
-            <div class="col-lg-10 panel panel-default" style="text-align: left; background-color: darkolivegreen; color: white">
+            <div class="col-lg-10 definicije" >
                 <div class="col-md-12">
                     <h2><a href="{{route('definition.single',[$definition->slug,$definition->id])}}">{{$definition->title}}</a></h2>
                 </div>

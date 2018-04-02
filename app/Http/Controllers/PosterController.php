@@ -6,6 +6,7 @@ use App\Comment;
 use App\Like;
 use App\Poster;
 use App\User;
+use Carbon\Carbon;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,21 @@ class PosterController extends Controller
 {
     public function create()
     {
+        if (!Auth::user())
+        {
+            return back();
+        }
+
+        $user = Auth::user();
+        $last_poster = $user->posters()->orderBy('created_at','desc')->first();
+
+        $date = Carbon::now()->subHour(5);
+
+        if ($last_poster->created_at > $date)
+        {
+            return view('users.posteri.create_limit',compact('last_poster'));
+        }
+
         return view('users.posteri.create');
     }
 
@@ -36,7 +52,7 @@ class PosterController extends Controller
         $poster->save();
 
 
-        return back()->with('success','Image Upload successfully');
+        return back()->with('success','Vas Poster mora dobiti odobrenje od moderatora!');
 
     }
 

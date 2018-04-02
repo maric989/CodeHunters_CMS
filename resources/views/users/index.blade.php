@@ -52,73 +52,6 @@
                 <a class="navbar-brand" href="/">Posteri</a>
             @endif
         </div>
-        <!-- /.navbar-header -->
-
-
-
-        {{--<ul class="nav navbar-top-links navbar-right">--}}
-
-
-            {{--<!-- /.dropdown -->--}}
-            {{--<li class="dropdown">--}}
-                {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">--}}
-                    {{--<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>--}}
-                {{--</a>--}}
-                {{--<ul class="dropdown-menu dropdown-user">--}}
-                    {{--<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>--}}
-                    {{--</li>--}}
-                    {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="divider"></li>--}}
-                    {{--<li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-                {{--<!-- /.dropdown-user -->--}}
-            {{--</li>--}}
-            {{--<!-- /.dropdown -->--}}
-
-
-
-        {{--</ul>--}}
-
-        {{--<div class="input-group searchform" style="width: 10%;float: right;margin-top: 10px; margin-right: 10px">--}}
-            {{--<input type="text" class="form-control" placeholder="Search...">--}}
-            {{--<span class="input-group-btn">--}}
-                                    {{--<button class="btn btn-default" type="button">--}}
-                                        {{--<i class="fa fa-search"></i>--}}
-                                    {{--</button>--}}
-                                {{--</span>--}}
-        {{--</div>--}}
-
-
-
-
-
-
-        {{--<ul class="nav navbar-nav navbar-right">--}}
-        {{--@if(auth()->guest())--}}
-        {{--@if(!Request::is('auth/login'))--}}
-        {{--<li><a href="{{ url('/auth/login') }}">Login</a></li>--}}
-        {{--@endif--}}
-        {{--@if(!Request::is('auth/register'))--}}
-        {{--<li><a href="{{ route('auth.signup') }}">Register</a></li>--}}
-        {{--@endif--}}
-        {{--@else--}}
-                {{--<li>--}}
-                    {{--<form action="{{route('logout')}}" method="post">--}}
-                        {{--{{csrf_field()}}--}}
-                        {{--<button type="submit" class="logout_btn">Logout</button>--}}
-                {{--</form>--}}
-                {{--</li>--}}
-                {{--<li class="dropdown">--}}
-        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>--}}
-        {{--<ul class="dropdown-menu" role="menu">--}}
-
-        {{--<li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>--}}
-        {{--</ul>--}}
-        {{--</li>--}}
-        {{--@endif--}}
-        {{--</ul>--}}
 
         <ul class="nav navbar-nav navbar-right" style="margin-right: 50px">
         @if(Auth::check())
@@ -174,10 +107,11 @@
                             <li>
                                 <a href="{{route('definition.index')}}">Sve Definicije</a>
                             </li>
-                            <li>
-                                <a href="{{route('definition.add')}}">Dodaj Definiciju</a>
-                            </li>
-
+                            @if(Auth::user())
+                                <li>
+                                    <a href="{{route('definition.add')}}">Dodaj Definiciju</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
 
@@ -188,10 +122,11 @@
                             <li>
                                 <a href="#">Svi Posteri</a>
                             </li>
-                            <li>
-                                <a href="{{route('poster.add')}}">Dodaj Poster</a>
-                            </li>
-
+                            @if(Auth::user())
+                                <li>
+                                    <a href="{{route('poster.add')}}">Dodaj Poster</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
 

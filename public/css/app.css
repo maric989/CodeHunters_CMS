@@ -5269,6 +5269,8 @@ tbody.collapse.in {
   min-height: 50px;
   margin-bottom: 22px;
   border: 1px solid transparent;
+  background-color: #cccccc;
+  background-image: radial-gradient(gray,black);
 }
 
 .navbar:before,

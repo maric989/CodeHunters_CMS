@@ -19,29 +19,29 @@
 //         })
 //     })
 // });
-
-$(function() {
-    $(document).ready(function () {
-        $('#downvote').on('submit', function (e) {
-            console.log('fffff');
-            $.ajaxSetup({
-                header: $('meta[name="_token"]').attr('content')
-            })
-            e.preventDefault(e);
-
-            $.ajax({
-
-                type: "POST",
-                url: '/posteri/downlike',
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (data) {
-
-                }
-            })
-        });
-    });
-});
+//
+// $(function() {
+//     $(document).ready(function () {
+//         $('#downvote').on('submit', function (e) {
+//             console.log('fffff');
+//             $.ajaxSetup({
+//                 header: $('meta[name="_token"]').attr('content')
+//             })
+//             e.preventDefault(e);
+//
+//             $.ajax({
+//
+//                 type: "POST",
+//                 url: '/posteri/downlike',
+//                 data: $(this).serialize(),
+//                 dataType: 'json',
+//                 success: function (data) {
+//                     console.log(data);
+//                 },
+//                 error: function (data) {
+//
+//                 }
+//             })
+//         });
+//     });
+// });

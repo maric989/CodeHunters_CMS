@@ -7,6 +7,7 @@ use App\Definition;
 use App\Http\Requests\CreateDefinitionRequest;
 use App\Like;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,13 +38,31 @@ class DefinitionController extends Controller
 
     public function create()
     {
+        if (!Auth::user())
+        {
+            return back();
+        }
+
         $user = Auth::user();
+        $last_definition = $user->definition()->orderBy('created_at','desc')->first();
+
+        $date = Carbon::now()->subHour(5);
+
+        if ($last_definition->created_at > $date)
+        {
+            return view('users.definicije.create_limit',compact('last_definition'));
+        }
 
         return view('users.definicije.create',compact('user'));
     }
 
     public function store(CreateDefinitionRequest $request,Definition $definition)
     {
+        if (!Auth::user())
+        {
+            return back();
+        }
+
         $user_id = Auth::user()->id;
 
         $definition->title = $request->title;

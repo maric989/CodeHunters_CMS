@@ -24,8 +24,8 @@ class CreateDefinitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|text:255',
-            'definicija'    =>  'required|text:255'
+            'title' => 'required',
+            'definicija'    =>  'required'
         ];
 
     }

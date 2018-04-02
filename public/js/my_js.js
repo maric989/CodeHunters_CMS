@@ -25,3 +25,18 @@
 //         });
 //     });
 // });
+
+$(document).ready(function () {
+    var buttonEdit = $('<button></button>', {
+            text: 'UP'
+        }).addClass('buttonDOWN'),
+        buttonDelete = $('<button></button>', {
+            text: 'DOWN'
+        }).addClass('buttonUP');
+    var form = $('<form></form>').append(
+        buttonEdit,buttonDelete
+    );
+
+
+
+});
