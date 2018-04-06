@@ -49,11 +49,13 @@ class HomeController extends Controller
 
         }
         $user = Auth::user();
-        $user_id = $user->id;
+
+
         if ($user->role_id != 1)
         {
             return redirect('/');
         }
+
         $users_count = User::count();
         $definicije_count = Definition::count();
         $posters_count = Poster::count();

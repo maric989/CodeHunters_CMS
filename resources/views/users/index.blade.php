@@ -120,7 +120,7 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Posteri<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Svi Posteri</a>
+                                <a href="{{route('home')}}">Svi Posteri</a>
                             </li>
                             @if(Auth::user())
                                 <li>
