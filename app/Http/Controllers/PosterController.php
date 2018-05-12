@@ -39,6 +39,12 @@ class PosterController extends Controller
 
     public function store(CreatePosterRequest $request,Poster $poster)
     {
+        if (!Auth::user())
+        {
+            return back();
+        }
+        $user_id = Auth::user()->id;
+
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images');
@@ -52,6 +58,13 @@ class PosterController extends Controller
 
         $poster->save();
 
+        $user = User::find($user_id);
+
+        if(empty($user->role_id))
+        {
+           $user->role_id = 2;
+           $user->save();
+        }
 
         return back()->with('success','Vas Poster mora dobiti odobrenje od moderatora!');
 
