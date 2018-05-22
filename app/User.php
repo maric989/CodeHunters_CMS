@@ -44,4 +44,73 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Poster');
     }
+
+    //Sve sto je user likovao
+    public function getAllLikes()
+    {
+        $likes = Like::where('user_id',$this->id)
+            ->where('up','1')
+            ->get();
+        return count($likes);
+    }
+
+    //Sve postere koje je lajkovao
+    public function getAllPosterLikes()
+    {
+        $likes = Like::where('user_id',$this->id)
+            ->where('likeable_type','App\Poster')
+            ->where('up','1')
+            ->get();
+        return count($likes);
+    }
+
+    //Sve definicije koje je lajkovao
+    public function getAllDefinitionLikes()
+    {
+        $likes = Like::where('user_id',$this->id)
+            ->where('likeable_type','App\Definition')
+            ->where('up','1')
+            ->get();
+        return count($likes);
+    }
+
+    public function getDefinitionLiked()
+    {
+        $result = [
+            'def_count' => 0
+        ];
+
+        $definitions = $this->definition()->get();
+
+        foreach ($definitions as $definition)
+        {
+            $likes_def = Like::where('likeable_id',$definition->id)
+                ->where('likeable_type','App\Definition')
+                ->where('up','1')
+                ->count();
+
+            $result['def_count'] += $likes_def;
+        }
+        return $result['def_count'];
+    }
+
+    public function getPosterLiked()
+    {
+        $result = [
+            'poster_count' => 0
+        ];
+
+        $definitions = $this->posters()->get();
+
+        foreach ($definitions as $definition)
+        {
+            $likes_def = Like::where('likeable_id',$definition->id)
+                ->where('likeable_type','App\Poster')
+                ->where('up','1')
+                ->count();
+
+            $result['poster_count'] += $likes_def;
+        }
+        return $result['poster_count'];
+    }
 }
