@@ -17,6 +17,14 @@
                         <div class="meta_info_poster">
                         <p class="post_meta">{{($like->where('likeable_id',$poster->id)->whereIn('likeable_type','App\Poster')->pluck('up')->sum()) - $like->where('likeable_id',$poster->id)->whereIn('likeable_type','App\Poster')->pluck('down')->sum()}} bodova | 0 komentara</p>
                          <p style="text-align: right">Kreator: AAA</p>
+                            <div id="social-links">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://jorenvanhocht.be" class="social-button " id=""><span class="fa fa-facebook-official"></span></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text=my share text&amp;url=http://jorenvanhocht.be" class="social-button " id=""><span class="fa fa-twitter"></span></a></li>
+                                    <li><a href="https://plus.google.com/share?url=http://jorenvanhocht.be" class="social-button " id=""><span class="fa fa-google-plus"></span></a></li>
+                                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://jorenvanhocht.be&amp;title=my share text&amp;summary=dit is de linkedin summary" class="social-button " id=""><span class="fa fa-linkedin"></span></a></li>
+                                </ul>
+                            </div>
 
                         @if(Auth::user())
 {{--                        @if(!$poster->likes()->where('user_id',$logged_user_id)->count())--}}

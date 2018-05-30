@@ -16,6 +16,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/mystyle.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+
 {{--    <link href="{{asset('css/libs/style.css')}}" rel="stylesheet">--}}
 
 
@@ -226,6 +227,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{asset('js/my_js.js')}}"></script>
 
+<script src="{{ asset('js/share.js') }}"></script>
 
 
 

@@ -1,17 +1,18 @@
 @extends('users.index')
 
 @section('content')
-    @if(Auth::user())
-        @if(Auth::user()->slug == $user->slug)
-            <div class="profilehead">
-                <div>{{$user->name}}</div>
+    <div class="profilehead">
+        <div><h3>{{$user->name}}</h3></div>
+        @if(Auth::user())
+            @if(Auth::user()->slug == $user->slug)
                 <a href="{{route('author.settings',$user->slug)}}"><span>Edit profile</span></a>
-            </div>
+
             <div class="change_picture">
                 <a href="{{route('author.uploadImage',$user->slug)}}"><span>Promeni Profilnu Sliku</span></a>
             </div>
+            @endif
         @endif
-    @endif
+    </div>
     <div class="wrap flex">
         <div class="userstats">
             <div class="znacke flex">
@@ -45,7 +46,7 @@
             <ul>
                 <li>Ukupno postera
                     <span style="float: right;margin-right: 30px">
-                        {{count($user->posters)}}
+                        <a href="{{route('author.posters',$user->slug)}}" style="color: white"> {{count($user->posters)}} </a>
                     </span>
                 </li>
                 <li>Ukupno definicija

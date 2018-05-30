@@ -68,6 +68,13 @@ class AuthorController extends Controller
         $user->save();
 
         return back();
+    }
 
+    public function userPosters(Request $request)
+    {
+        $user = User::where('slug',$request->slug)->first();
+        $posters = $user->posters->sortByDesc('created_at');
+
+        return view('users.autori.userPosters',compact('user','posters'));
     }
 }

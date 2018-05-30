@@ -79,6 +79,7 @@
     font-size: 30px;
     font-weight: bold;
     text-align: center;
+    padding: 10px;
 }
 
 .opisPosta {
@@ -89,6 +90,7 @@
     color: white;
     text-align: center;
     font-size: 30px;
+    padding: 2px;
 }
 .opisPosta h4{
     font-size: 30px;
