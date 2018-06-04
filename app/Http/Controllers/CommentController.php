@@ -17,7 +17,7 @@ class CommentController extends Controller
         if (Auth::user()){
             $user = Auth::user();
         }else{
-            return redirect()->route('auth.signup');
+            return redirect()->route('auth.signup')->with('error','Morate biti prijavljeni da bi ostavili komentar');
         }
 
         $comment->post_id = $request->post_id;
